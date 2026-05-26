@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>un lugar de paz | Alojamientos Turísticos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- ══ MOBILE MENU ══════════════════════════════════════════════ -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#nosotros"   onclick="closeMobile()">Nosotros</a>
+    <a href="#servicios"  onclick="closeMobile()">Servicios</a>
+    <a href="#formulario" onclick="closeMobile()">Reservar</a>
+    <a href="#footer"     onclick="closeMobile()">Contacto</a>
+  </nav>
+
+  <!-- ══ NAVBAR ═══════════════════════════════════════════════════ -->
+  <header id="navbar">
+    <a href="#" class="logo">Paz y tranquilidad</a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#formulario">Reservar</a></li>
+      <li><a href="#footer">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Alojamientos turísticos de naturaleza</p>
+      <h1 class="hero-title">Donde el bosque<br>te abraza</h1>
+      <p class="hero-subtitle">Escapadas únicas en entornos naturales privilegiados. Vive una experiencia que conecta con lo esencial.</p>
+      <a href="#formulario" class="btn btn-primary">Reserva tu estadía</a>
+    </div>
+    <div class="hero-scroll">Descubre</div>
+  </section>
+
+  <!-- ══ NOSOTROS ═══════════════════════════════════════════════════ -->
+  <section id="nosotros">
+    <div class="container about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-main"></div>
+        <div class="about-img-accent"></div>
+      </div>
+      <div class="reveal">
+        <p class="section-label">Nuestra historia</p>
+        <h2 class="section-title">Un refugio creado<br>con pasión</h2>
+        <p class="section-desc">
+          Refugio Verde nació en 2018 del sueño de ofrecer un espacio donde la naturaleza y el confort coexistan sin compromisos. Ubicados en el corazón de la selva tropical, cada rincón de nuestras instalaciones ha sido diseñado para que te desconectes del mundo y te reconectes contigo mismo.
+        </p>
+        <p class="section-desc" style="margin-top:1rem;">
+          Nuestro equipo local cuida cada detalle de tu estadía: desde la gastronomía artesanal hasta las rutas de senderismo personalizadas.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <strong>200+</strong>
+            <span>Huéspedes felices</span>
+          </div>
+          <div class="stat">
+            <strong>12</strong>
+            <span>Cabañas únicas</span>
+          </div>
+          <div class="stat">
+            <strong>6</strong>
+            <span>Años de experiencia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICIOS ═════════════════════════════════════════════════ -->
+  <section id="servicios">
+    <div class="container">
+      <div class="servicios-header reveal">
+        <p class="section-label">Lo que ofrecemos</p>
+        <h2 class="section-title">Nuestras experiencias</h2>
+      </div>
+      <div class="cards-grid">
+
+        <div class="card reveal">
+          <div class="card-img c1"></div>
+          <div class="card-body">
+            <div class="card-icon">🌿</div>
+            <h3 class="card-title">Cabaña Selva</h3>
+            <p class="card-text">Cabaña totalmente inmersa en la naturaleza, con terraza privada y hamacas sobre el río. Perfecta para parejas.</p>
+            <div class="card-price">Desde $85 / noche</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img c2"></div>
+          <div class="card-body">
+            <div class="card-icon">🏔️</div>
+            <h3 class="card-title">Suite Montaña</h3>
+            <p class="card-text">Vista panorámica a 360° sobre el volcán y el lago. Jacuzzi exterior e interior de lujo rústico.</p>
+            <div class="card-price">Desde $120 / noche</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img c3"></div>
+          <div class="card-body">
+            <div class="card-icon">⛺</div>
+            <h3 class="card-title">Glamping Estelar</h3>
+            <p class="card-text">Tiendas de lona premium con cama king, ducha al aire libre y techo transparente para ver las estrellas.</p>
+            <div class="card-price">Desde $65 / noche</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img c4"></div>
+          <div class="card-body">
+            <div class="card-icon">🍽️</div>
+            <h3 class="card-title">Gastronomía Local</h3>
+            <p class="card-text">Desayunos artesanales, cenas a la luz de velas y tours gastronómicos con chefs locales. Todo de temporada.</p>
+            <div class="card-price">Incluido en paquetes</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img c5"></div>
+          <div class="card-body">
+            <div class="card-icon">🧘</div>
+            <h3 class="card-title">Bienestar & Spa</h3>
+            <p class="card-text">Masajes con aceites esenciales, yoga al amanecer frente al lago y baños de barro volcánico.</p>
+            <div class="card-price">Desde $40 / sesión</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img c6"></div>
+          <div class="card-body">
+            <div class="card-icon">🛶</div>
+            <h3 class="card-title">Aventura Natural</h3>
+            <p class="card-text">Senderismo, kayak en el lago, tirolesa y tours de observación de flora y fauna con guías expertos.</p>
+            <div class="card-price">Desde $30 / actividad</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FORMULARIO ════════════════════════════════════════════════ -->
+  <section id="formulario">
+    <div class="container form-grid">
+      <div class="form-info reveal">
+        <p class="section-label">Reserva ahora</p>
+        <h2 class="section-title">Planifica tu<br>escapada perfecta</h2>
+        <p class="section-desc">Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas para confirmar tu reserva.</p>
+        <ul>
+          <li>Confirmación garantizada en 24 horas</li>
+          <li>Cancelación gratuita hasta 7 días antes</li>
+          <li>Paquetes personalizados disponibles</li>
+          <li>Descuentos para estadías prolongadas</li>
+          <li>Transporte desde la ciudad incluido</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre"/>
+              <span class="error-msg" id="err-nombre">Este campo es obligatorio.</span>
+            </div>
+            <div class="form-group">
+              <label for="apellido">Apellido *</label>
+              <input type="text" id="apellido" name="apellido" placeholder="Tu apellido"/>
+              <span class="error-msg" id="err-apellido">Este campo es obligatorio.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico *</label>
+            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com"/>
+            <span class="error-msg" id="err-email">Ingresa un correo válido.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+503 0000-0000"/>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="llegada">Fecha de llegada *</label>
+              <input type="date" id="llegada" name="llegada"/>
+              <span class="error-msg" id="err-llegada">Selecciona una fecha.</span>
+            </div>
+            <div class="form-group">
+              <label for="salida">Fecha de salida *</label>
+              <input type="date" id="salida" name="salida"/>
+              <span class="error-msg" id="err-salida">Selecciona una fecha válida.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="alojamiento">Tipo de alojamiento *</label>
+            <select id="alojamiento" name="alojamiento">
+              <option value="">— Selecciona una opción —</option>
+              <option value="selva">Cabaña Selva</option>
+              <option value="montana">Suite Montaña</option>
+              <option value="glamping">Glamping Estelar</option>
+            </select>
+            <span class="error-msg" id="err-alojamiento">Elige un tipo de alojamiento.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje o peticiones especiales</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Enviar solicitud de reserva</button>
+          <div class="success-msg" id="successMsg">
+            ¡Gracias! Tu reserva fue enviada con éxito.<br>Te contactaremos pronto 🌿
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Paz y tranquilidad</span>
+        <p>Un santuario natural donde cada estadía se convierte en un recuerdo que dura toda la vida.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Twitter">tw</a>
+          <a href="#" aria-label="YouTube">yt</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#formulario">Reservar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#">Cabaña Selva</a></li>
+          <li><a href="#">Suite Montaña</a></li>
+          <li><a href="#">Glamping Estelar</a></li>
+          <li><a href="#">Spa & Bienestar</a></li>
+          <li><a href="#">Tours de Aventura</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:pazytranquilidad@pazytranquilidad.com">hola@pazytranquilidad.com</a></li>
+          <li><a href="tel:+50371122355">+503 71122355</a></li>
+          <li><a href="#">Parque Natural, El Salvador</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> <span>Paz y tranquilidad</span>. Todos los derechos reservados. Hecho con ❤️ en El Salvador.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

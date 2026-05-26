@@ -1,0 +1,566 @@
+/* ─── VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --cream:    #f5f0e8;
+  /* Cambio: Rojo vino/burdeos elegante para sustituir al negro oscuro */
+  --dark:      #5c1d24; 
+  --forest:   #2d4a2d;
+  --sage:     #7a9e7e;
+  --gold:     #c9a84c;
+  --light:    #e8e2d4;
+  --white:    #fdfcf8;
+  --celeste-light: #e0f2fe; 
+  --celeste-dark:  #bae6fd; 
+  --ff-display: 'Cormorant Garamond', serif;
+  --ff-body:    'DM Sans', sans-serif;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-body);
+  background: linear-gradient(to bottom, var(--celeste-light), var(--celeste-dark));
+  background-attachment: fixed;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+img { width: 100%; display: block; }
+a  { text-decoration: none; color: inherit; }
+
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 4rem;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+#navbar.scrolled {
+  background: rgba(245,240,232,0.97);
+  box-shadow: 0 2px 24px rgba(92,29,36,0.08);
+}
+.logo {
+  font-family: var(--ff-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  transition: color var(--transition);
+}
+#navbar.scrolled .logo { color: var(--forest); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  transition: color var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+.nav-links a:hover::after { width: 100%; }
+#navbar.scrolled .nav-links a { color: var(--dark); }
+
+/* Hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 26px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.35s ease;
+}
+#navbar.scrolled .hamburger span { background: var(--dark); }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--dark);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--ff-display);
+  font-size: 2.2rem;
+  color: var(--white);
+  letter-spacing: 0.05em;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  /* CAMBIO: Cabaña A-frame premium de noche iluminada en el bosque */
+  background:
+    linear-gradient(to bottom, rgba(92,29,36,0.55) 0%, rgba(92,29,36,0.2) 50%, rgba(92,29,36,0.7) 100%),
+    url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1600&q=80') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
+@keyframes kenBurns {
+  from { transform: scale(1.05) translate(0,0); }
+  to   { transform: scale(1.12) translate(-1%, -1%); }
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: var(--white);
+  padding: 0 1.5rem;
+  animation: fadeUp 1.1s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  animation: fadeUp 1.1s 0.2s ease both;
+}
+.hero-title {
+  font-family: var(--ff-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.0;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1.1s 0.35s ease both;
+}
+.hero-subtitle {
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  animation: fadeUp 1.1s 0.5s ease both;
+}
+.btn {
+  display: inline-block;
+  padding: 1rem 2.6rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--dark);
+  border: 2px solid var(--gold);
+  animation: fadeUp 1.1s 0.65s ease both;
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--gold);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255,255,255,0.6);
+}
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--dark);
+  border-color: var(--white);
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+.hero-scroll::after {
+  content: '';
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.5);
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ─── SECCIONES COMUNES ──────────────────────────────────────── */
+section { padding: 6rem 2rem; }
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.8rem;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+.section-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  /* Cambio: Gris por un rojo vino suave secundario */
+  color: #754247; 
+  max-width: 580px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ─── NOSOTROS ───────────────────────────────────────────────── */
+#nosotros { background: var(--white); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-img-wrap { position: relative; }
+.about-img-main {
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  /* CAMBIO REALIZADO: Cabaña acogedora estilo rústico en el bosque neblinoso de El Salvador */
+  background: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80') center/cover;
+}
+.about-img-accent {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  width: 55%;
+  aspect-ratio: 4/3;
+  /* DETALLE: Interior de la cabaña, acogedor y minimalista */
+  background: url('https://images.unsplash.com/photo-1546548970-71785318a17b?w=600&q=80') center/cover;
+  border: 6px solid var(--cream);
+}
+.about-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+.stat strong {
+  display: block;
+  font-family: var(--ff-display);
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1;
+}
+.stat span {
+  font-size: 0.82rem;
+  color: #8c6065;
+  letter-spacing: 0.05em;
+}
+
+/* ─── SERVICIOS ──────────────────────────────────────────────── */
+#servicios { background: transparent; }
+.servicios-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.card {
+  background: var(--white);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(92,29,36,0.12);
+}
+.card-img { height: 220px; object-fit: cover; }
+
+/* NUEVO ENLACE: Tienda de campaña / Glamping Estelar Premium de noche */
+.card-img.c1 { background: url('https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=700&q=80') center/cover; }
+
+/* Jacuzzi exterior privado con vistas al bosque o montaña */
+.card-img.c2 { background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQXUDI2c1Ez16WxKYZ0O9AMi8afEX9Euk31BiYM0xMNaR-6M8wV4GgdcyECqjd') center/cover; }
+/* Fogata nocturna elegante/zona lounge exterior */
+.card-img.c3 { background: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA5FkBQGXEMr1Ieqh_GVBa2asJzF9_NLbLmHXvrgcbK-YtL2MmXMAfPTJt1U96') center/cover; }
+/* Cabaña de diseño geométrico A-Frame moderna */
+.card-img.c4 { background: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGyAL-SvvDiomOkIpMk3BNgsCqPpH1KaX9YnGkgj2249XLuRM60KLqwhZcirDK') center/cover; }
+/* Dormitorio de lujo con ventanal hacia la naturaleza */
+.card-img.c5 { background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOdLqz78-jZ8u5bAJlXNOWFx6P01hw32nymoJ5dmAzu07G5psqYdImDu6vaNon') center/cover; }
+
+/* CAMBIO: Se sustituye la cabaña junto al agua por una vista profunda e inmersiva de un bosque verde y neblinoso */
+.card-img.c6 { background: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&q=80') center/cover; }
+
+.card-body { padding: 1.5rem 1.8rem 2rem; }
+.card-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+.card-title {
+  font-family: var(--ff-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+}
+.card-text {
+  font-size: 0.9rem;
+  /* Cambio: Gris por rojo vino suave para legibilidad */
+  color: #825358; 
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.card-price {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  color: var(--forest);
+  font-weight: 600;
+}
+
+/* ─── FORMULARIO ─────────────────────────────────────────────── */
+#formulario {
+  background: var(--forest);
+  color: var(--white);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.form-info .section-title { color: var(--white); }
+.form-info .section-desc  { color: rgba(255,255,255,0.75); }
+.form-info .section-label { color: var(--gold); }
+.form-info ul { list-style: none; margin-top: 2rem; }
+.form-info li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 0.8rem;
+}
+.form-info li::before {
+  content: '✓';
+  color: var(--gold);
+  font-weight: 700;
+}
+.contact-form {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 2.5rem;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form-grid .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+.form-group.full { grid-column: 1 / -1; }
+label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 0.45rem;
+}
+input, select, textarea {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
+  padding: 0.85rem 1rem;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+  border-radius: 0;
+  width: 100%;
+}
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
+select option { background: var(--forest); color: var(--white); }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.12);
+}
+textarea { min-height: 110px; resize: vertical; }
+.error-msg {
+  font-size: 0.75rem;
+  color: #ff8a8a;
+  margin-top: 0.3rem;
+  display: none;
+}
+.input-error { border-color: #ff8a8a !important; }
+.btn-submit {
+  width: 100%;
+  padding: 1.1rem;
+  background: var(--gold);
+  color: var(--dark);
+  border: 2px solid var(--gold);
+  font-family: var(--ff-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-top: 0.5rem;
+}
+.btn-submit:hover {
+  background: transparent;
+  color: var(--gold);
+}
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--ff-display);
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.65);
+  padding: 4rem 2rem 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+.footer-brand .logo {
+  color: var(--white);
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+.footer-brand p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  max-width: 280px;
+}
+.footer-col h4 {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; }
+.footer-col a { font-size: 0.88rem; transition: color var(--transition); }
+.footer-col a:hover { color: var(--white); }
+.social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.social-links a {
+  width: 38px; height: 38px;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: all var(--transition);
+}
+.social-links a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--dark);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.82rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom span { color: var(--gold); }
+
+/* ─── REVEAL ANIMATION ───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  #navbar { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .about-grid  { grid-template-columns: 1fr; gap: 3rem; }
+  .about-img-accent { right: 0; }
+  .form-grid   { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row    { grid-template-columns: 1fr; }
+  .cards-grid  { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  section { padding: 4rem 1.5rem; }
+}
